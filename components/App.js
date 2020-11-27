@@ -1,4 +1,4 @@
 export default {
   name: 'App',
-  template: 'omg'
+  template: '<div>App Test</div>'
 }
