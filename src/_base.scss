@@ -1,0 +1,109 @@
+// font
+
+
+// mixins
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+// class modules
+.show-on-mobile {
+  display: none;
+}
+
+.flex-on-PC {
+  display: flex;
+}
+
+.section {
+  box-sizing: border-box;
+  padding: 0 50px;
+  border-left: 5px solid rgb(100, 100, 214);
+  width: 70vw;
+  // border: 1px solid red;
+
+  &-wrap {
+    display: flex;
+    margin: auto;
+    width: fit-content;
+
+  }
+  &-title {
+    margin: 0 30px;
+    width: 200px;
+    text-align: right;
+    font-size: 3rem;
+    font-weight: bolder;
+  }
+}
+
+// Navbar
+.navbar-mobile {
+  @extend .show-on-mobile;
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  box-shadow: 5px 5px 5px lightgrey;
+}
+
+.menu-mobile {
+  position: fixed;
+  top: 0; bottom: 0; left: 0;
+  width: 0;
+  background-color: #333333;
+  color: white;
+  overflow: hidden;
+  transition: 500ms;
+  transition-timing-function: ease-in-out;
+  z-index: 100;
+  
+  &-active {
+    width: 80vw;
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0; bottom: 0; left: 0; right: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 99;
+}
+
+
+@media screen and (max-width: 1000px) {
+  .show-on-mobile {
+    display: initial;
+  }
+
+  .flex-on-PC {
+    display: initial;
+  }
+
+  .section {
+    margin: auto;
+    padding: 50px;
+    border: none;
+
+    &-wrap {
+      margin: 0 auto;
+    }
+
+    &-title {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .section {
+    width: 100vw;
+    padding: 10vw;
+  }
+}
