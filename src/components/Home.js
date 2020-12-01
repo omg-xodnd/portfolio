@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { createObserver } from '../util';
+import Header from './Header';
 import './Home.scss';
 
 function Home({ state, methods }) {
@@ -7,18 +8,18 @@ function Home({ state, methods }) {
   const { setIntroEnded } = methods;
   const homeOverlay = useRef();
 
-  function onIntersect(entries) {
+  function handleIntersect(entries) {
     entries.forEach(entry => { 
       if (entry.isIntersecting) { setIntroEnded(true); };
     });
-  };
+  }
 
   useEffect(() => {
-    let observer = !isIntroEnded ? createObserver(onIntersect) : '';
-    if (observer) { observer.observe(homeOverlay.current); };
+    const observer = createObserver(handleIntersect);
+    if (!isIntroEnded) { observer.observe(homeOverlay.current); };
 
     return () => {
-      if (!isIntroEnded) { observer.disconnect() };
+      observer.disconnect();
     }
   });
 
@@ -32,8 +33,10 @@ function Home({ state, methods }) {
       <Overlay />
       { isIntroEnded &&
         <>
-          <header className="header"></header>
-          <main>우하하</main>
+          <Header />
+          <main>
+            
+          </main>
         </>
       }
     </div>
