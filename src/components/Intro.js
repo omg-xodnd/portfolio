@@ -35,7 +35,7 @@ function Intro({ state, methods }) {
         <div className="intro-title-text-wrap">
           <h1 className="intro-title-text">
             안녕하세요!<br/>
-            <strong>웹 프론트엔드 개발자 </strong>
+            <strong>프론트엔드 개발자 </strong>
             <br className="show-under-1024px"/>
             박태웅의 포트폴리오입니다<strong>.</strong>
           </h1>
