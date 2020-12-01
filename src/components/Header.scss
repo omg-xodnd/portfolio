@@ -1,0 +1,23 @@
+@import '../base';
+
+.header {
+  @include flex-between;
+  position: fixed;
+  top: 0; right: 0; left: 0;
+  padding: 15px 10vw;
+  font-size: 1.5rem;
+  font-weight: bolder;
+
+  &-nav {
+    ul { 
+      display: flex;
+      margin-block-start: 0;
+      margin-block-end: 0;
+      padding: 0; 
+    }
+    li { 
+      list-style-type: none; 
+      margin-left: 50px;
+    }
+  }
+}
