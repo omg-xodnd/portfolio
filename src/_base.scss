@@ -1,0 +1,46 @@
+// [fonts]
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+
+// [vars]
+$color-active: rgb(40, 108, 255);
+$color-bg: rgb(21, 21, 22);
+
+
+
+// [mixins]
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+// [keyframes]
+@keyframes bounce {
+  0%   { transform: translateY(0);}
+  50%  { transform: translateY(-7px);}
+  100% { transform: translateY(0)}
+}
+
+// [class modules]
+.show-under-1024px { display: none; }
+.show-under-768px  { display: none; }
+.show-under-576px  { display: none; }
+
+
+@media screen and (max-width: 1024px) {
+  .show-under-1024px {
+    display: initial;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .show-under-768px {
+    display: initial;
+  }
+}

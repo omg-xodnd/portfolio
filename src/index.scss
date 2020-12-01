@@ -1,0 +1,36 @@
+@import './base';
+
+// [base tags]
+html {
+  font-size: 10px;
+  color: white;
+  font-family: 'Noto Sans KR', sans-serif;
+  background-color: $color-bg;
+  
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $color-active;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: $color-bg;
+  }
+}
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 7px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  html {
+    font-size: 5px;
+  }
+}
