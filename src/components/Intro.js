@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { sleep, smoothScrollTo } from '../util';
 import './Intro.scss';
 
