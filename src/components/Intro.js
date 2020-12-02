@@ -1,20 +1,29 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { sleep, smoothScrollTo } from '../util';
 import './Intro.scss';
 
 function Intro({ state, methods }) {
   const { isIntroLoaded } = state;
   const { setIntroLoaded } = methods;
+  const [isScrolled, setScrolled] = useState(false);
 
   async function onMount() {
     await sleep(2000);
     setIntroLoaded(true);
   };
+
+  async function autoScroll() {
+    if (isIntroLoaded && !isScrolled) {
+      await sleep(1600);
+      handleScroll();
+    };
+  }
   
   useEffect(() => onMount(), []);
   useEffect(() => {
     if (isIntroLoaded) {
       window.addEventListener('scroll', handleScroll);
+      autoScroll();
     };
 
     return () => {
@@ -25,7 +34,10 @@ function Intro({ state, methods }) {
   })
 
   function handleScroll() {
-    smoothScrollTo(window.innerHeight + 5);
+    if (!isScrolled) {
+      setScrolled(true);
+      smoothScrollTo(window.innerHeight + 1);
+    }
   };
 
   return (
@@ -45,7 +57,7 @@ function Intro({ state, methods }) {
       { isIntroLoaded && 
         <div onClick={handleScroll} className="intro-button-wrap">
           <button className="intro-button">
-            다음 페이지를 보려면 스크롤을 내려주세요.
+            <i className="fas fa-chevron-down"></i>
           </button>
         </div>
       }

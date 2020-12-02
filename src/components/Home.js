@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { createObserver } from '../util';
-import Header from './Header';
+import About from './About';
 import './Home.scss';
 
 function Home({ state, methods }) {
@@ -16,7 +16,7 @@ function Home({ state, methods }) {
 
   useEffect(() => {
     const observer = createObserver(handleIntersect);
-    if (!isIntroEnded) { observer.observe(homeOverlay.current); };
+    if (!isIntroEnded) { observer.observe(homeOverlay.current); window.scrollTo(0, 0);};
 
     return () => {
       observer.disconnect();
@@ -33,9 +33,8 @@ function Home({ state, methods }) {
       <Overlay />
       { isIntroEnded &&
         <>
-          <Header />
-          <main>
-            
+          <main className="main">
+            <About />
           </main>
         </>
       }

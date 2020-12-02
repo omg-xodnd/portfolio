@@ -8,13 +8,17 @@ export function createObserver(onIntersect, options = { threshold: 1 }) {
   return new IntersectionObserver(onIntersect, options);
 }
 
-export async function smoothScrollTo(targetY, unit = 10) {
+export async function smoothScrollTo(targetY, unit = 40) {
   const getDiff = () => targetY - window.scrollY;
-  const getUnit = (diff = getDiff()) => (
-    Math.abs(diff) < 30 ? diff : Math.sign(diff) * unit
-  );
-  while (getDiff() !== 0) {
+
+  while (1) {
     await sleep(15);
-    window.scrollBy(0, getUnit());
+    let diff = getDiff();
+    if (Math.abs(diff) < unit) {
+      window.scrollTo(0, targetY);
+      break;
+    } else {
+      window.scrollBy(0, Math.sign(diff) * unit);  
+    };
   };
 }

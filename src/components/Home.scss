@@ -6,6 +6,7 @@
 }
 
 .home {
+  box-sizing: border-box;
   position: relative;
   min-height: 100vh;
   background: white;
@@ -24,4 +25,8 @@
       animation: wipe-up 300ms ease-in-out 300ms forwards;
     }
   }
+}
+
+.main {
+  box-sizing: border-box;
 }

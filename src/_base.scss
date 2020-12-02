@@ -32,6 +32,19 @@ $color-bg: rgb(21, 21, 22);
 .show-under-768px  { display: none; }
 .show-under-576px  { display: none; }
 
+.section {
+  box-sizing: border-box;
+  padding-top: 50px;
+  margin: auto;
+  width: 80vw;
+
+  h1 {
+    margin: 0;
+    width: fit-content;
+    border-bottom: 0.5rem solid $color-active;
+    font-size: 5rem;
+  }
+}
 
 @media screen and (max-width: 1024px) {
   .show-under-1024px {

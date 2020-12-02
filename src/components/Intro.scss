@@ -16,6 +16,7 @@
   position: relative;
   overflow: auto;
   height: 100vh;
+  background-color: $color-bg;
   color: white;
 
   strong {
@@ -56,13 +57,24 @@
     position: absolute;
     bottom: 50px;
     width: 100%;
-    text-align: center;
   }
 
   &-button {
-    border: 1px solid white;
+    @include flex-center;
+    margin: auto;
+    width: 30px;
+    height: 30px;
+    border: 2px solid white;
+    border-radius: 100%;
+    border: none;
     background: none;
     color: white;
+    font-size: 1.5rem;
     animation: bounce 200ms 500ms 2;
+
+    &:hover {
+      cursor: pointer;
+      color: $color-active;
+    }
   }
 }
