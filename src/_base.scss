@@ -4,7 +4,7 @@
 // [vars]
 $color-active: rgb(40, 108, 255);
 $color-bg: rgb(21, 21, 22);
-
+$mobile-100vh: calc(var(--vh) * 100);
 
 
 // [mixins]
@@ -36,13 +36,41 @@ $color-bg: rgb(21, 21, 22);
   box-sizing: border-box;
   padding-top: 50px;
   margin: auto;
-  width: 80vw;
+  width: 60vw;
+  min-width: 768px;
+  font-size: 1.5rem;
 
   h1 {
+    position: relative;
     margin: 0;
     width: fit-content;
-    border-bottom: 0.5rem solid $color-active;
     font-size: 5rem;
+  }
+
+  .h1-deco {
+    position: absolute;
+    top: 2rem; left: -3rem;
+    height: 4rem;
+    width: 1rem;
+    background-color: $color-active;
+  }
+
+  h2 {
+    position: relative;
+    margin-top: 50px;
+    font-size: 2.5rem;
+    background: white;
+    border-bottom: 2px solid lightgrey;
+  } 
+
+  .h2-deco {
+    position: absolute;
+    top: 0;
+    left: -1rem;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 100%;
+    background: $color-active;
   }
 }
 
@@ -53,6 +81,11 @@ $color-bg: rgb(21, 21, 22);
 }
 
 @media screen and (max-width: 768px) {
+  .section {
+    width: 80vw;
+    min-width: auto;
+  }
+
   .show-under-768px {
     display: initial;
   }

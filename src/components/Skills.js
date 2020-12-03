@@ -18,7 +18,7 @@ function Skills() {
   );
 
   return (
-    <div className="skill-grid">{ itemGrid(logo) }</div>
+    <article className="skill-grid">{ itemGrid(logo) }</article>
   );
 }
 

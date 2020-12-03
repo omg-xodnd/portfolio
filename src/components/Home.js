@@ -15,8 +15,8 @@ function Home({ state, methods }) {
   }
 
   useEffect(() => {
-    const observer = createObserver(handleIntersect);
-    if (!isIntroEnded) { observer.observe(homeOverlay.current); window.scrollTo(0, 0);};
+    const observer = createObserver(handleIntersect, { threshold: 0.9 });
+    if (!isIntroEnded) {observer.observe(homeOverlay.current);};
 
     return () => {
       observer.disconnect();
