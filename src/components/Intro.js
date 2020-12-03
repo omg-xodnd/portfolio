@@ -1,45 +1,40 @@
-import React, { useEffect, useState } from 'react';
-import { sleep, smoothScrollTo } from '../util';
+import React, { useEffect, useRef } from 'react';
+import { sleep } from '../util';
 import './Intro.scss';
 
-function Intro({ state, methods }) {
-  const { isIntroLoaded } = state;
-  const { setIntroLoaded } = methods;
-  const [isScrolled, setScrolled] = useState(false);
+function Intro({ state, stateReducer}) {
+  const { isLoaded, isScrolled } = state;
+  const setStateRef = useRef(stateReducer);
+  const setState = () => setStateRef.current;
 
-  async function onMount() {
-    await sleep(2000);
-    setIntroLoaded(true);
-  };
+  // [effect hooks]
+  useEffect(() => {
+    async function onMounted() {
+      await sleep(2000);
+      setState()('isLoaded', true);
+    }
+    onMounted();
+  }, []);
 
+  useEffect(() => autoScroll());
+
+  // [methods]
+  async function handleScroll() {
+    if (isLoaded && !isScrolled) {
+      setState()('isScrolled', true);
+      setState()('isIntermissionVisible', true);
+      await sleep(500);
+      setState()('isFinished', true);
+    };
+  }
   async function autoScroll() {
-    if (isIntroLoaded && !isScrolled) {
-      await sleep(1600);
+    await sleep(1600);
+    if (isLoaded && !isScrolled) {
       handleScroll();
     };
   }
-  
-  useEffect(() => onMount(), []);
-  useEffect(() => {
-    if (isIntroLoaded) {
-      window.addEventListener('scroll', handleScroll);
-      autoScroll();
-    };
 
-    return () => {
-      if (isIntroLoaded) {
-        window.removeEventListener('scroll', handleScroll);
-      };
-    }
-  })
-
-  function handleScroll() {
-    if (!isScrolled) {
-      setScrolled(true);
-      smoothScrollTo(window.innerHeight + 1);
-    }
-  };
-
+  // [return]
   return (
     <section className="intro">
       <div className="intro-title-wrap">
@@ -54,7 +49,7 @@ function Intro({ state, methods }) {
         </div>
       </div>
       
-      { isIntroLoaded && 
+      { isLoaded && 
         <div onClick={handleScroll} className="intro-button-wrap">
           <button className="intro-button">
             <i className="fas fa-chevron-down"></i>

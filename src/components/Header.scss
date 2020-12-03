@@ -4,9 +4,9 @@
   @include flex-between;
   position: fixed;
   top: 0; right: 0; left: 0;
-  padding: 15px 10vw;
-  font-size: 1.5rem;
-  font-weight: bolder;
+  height: 8rem;
+  background-color: white;
+  color: white;
 
   &-nav {
     ul { 

@@ -2,11 +2,11 @@ import React from 'react';
 import logo from '../util/logo';
 import './Skills.scss';
 
-function Skills() {
+function Skills({ SectionTitle }) {
 
   const Item = ({ name, src }) => (
-    <figure className="skill-figure">
-      <img className="skill-img" src={src} alt=""/>
+    <figure className="skills-figure">
+      <img className="skills-img" src={src} alt=""/>
       <figcaption>{ name }</figcaption>
     </figure>
   );
@@ -18,7 +18,12 @@ function Skills() {
   );
 
   return (
-    <article className="skill-grid">{ itemGrid(logo) }</article>
+    <div className="skills-wrap">
+      <section className="skills">
+        <SectionTitle title={'Skills'} />
+        <div className="skills-grid">{ itemGrid(logo) }</div>
+      </section>
+    </div>
   );
 }
 

@@ -1,44 +1,28 @@
-import React, { useEffect, useRef } from 'react';
-import { createObserver } from '../util';
+import React from 'react';
+import Header from './Header';
 import About from './About';
+import Skills from './Skills';
 import './Home.scss';
 
-function Home({ state, methods }) {
-  const { isIntroEnded } = state;
-  const { setIntroEnded } = methods;
-  const homeOverlay = useRef();
-
-  function handleIntersect(entries) {
-    entries.forEach(entry => { 
-      if (entry.isIntersecting) { setIntroEnded(true); };
-    });
-  }
-
-  useEffect(() => {
-    const observer = createObserver(handleIntersect, { threshold: 0.9 });
-    if (!isIntroEnded) {observer.observe(homeOverlay.current);};
-
-    return () => {
-      observer.disconnect();
-    }
-  });
-
-  const Overlay = () => {
-    const className = `home-overlay ${isIntroEnded ? 'home-overlay-hide' : ''}`
-    return <div ref={homeOverlay} className={className}></div>
-  };
+function Home() {
+  const SectionTitle = ({ title }) => (
+    <div className="section-title-wrap">
+      <h1 className="section-title">
+        { title }
+        <div className="section-title-dot1"></div>
+        <div className="section-title-dot2"></div>
+      </h1>
+    </div>
+  )
 
   return (
-    <div className="home">
-      <Overlay />
-      { isIntroEnded &&
-        <>
-          <main className="main">
-            <About />
-          </main>
-        </>
-      }
-    </div>
+    <>
+      <Header />
+      <main className="main">
+        <About SectionTitle={SectionTitle} />
+        <Skills SectionTitle={SectionTitle} />
+      </main>
+    </>
   );
 }
 
