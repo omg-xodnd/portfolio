@@ -2,4 +2,12 @@
 
 .about {
   @extend .section;
+
+  &-wrap {
+    background: linear-gradient(to bottom, #fcfcfc, #cfcfcf);
+  }
+
+  p {
+    font-size: 2.5rem;
+  }
 }

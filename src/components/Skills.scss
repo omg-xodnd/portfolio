@@ -2,10 +2,6 @@
 
 .skills {
   @extend .section;
-  
-  &-wrap {
-    background: $color-bg-light;
-  }
 
   &-figure {
     margin: 0;

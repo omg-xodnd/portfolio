@@ -1,9 +1,10 @@
 import React from 'react';
-import logo from '../util/logo';
+import logo from '../util/skillsLogo';
 import './Skills.scss';
 
-function Skills({ SectionTitle }) {
+function Skills({ refSkills }) {
 
+  // components
   const Item = ({ name, src }) => (
     <figure className="skills-figure">
       <img className="skills-img" src={src} alt=""/>
@@ -18,12 +19,10 @@ function Skills({ SectionTitle }) {
   );
 
   return (
-    <div className="skills-wrap">
-      <section className="skills">
-        <SectionTitle title={'Skills'} />
-        <div className="skills-grid">{ itemGrid(logo) }</div>
-      </section>
-    </div>
+    <section ref={refSkills} className="skills">
+      <h1 className="section-title">Skills</h1>
+      <div className="skills-grid">{ itemGrid(logo) }</div>
+    </section>
   );
 }
 

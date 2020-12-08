@@ -9,6 +9,8 @@ import Python from '../assets/logo/Python.png';
 import Django from '../assets/logo/Django.png';
 import Git from '../assets/logo/Git.png';
 
-export default {
+const logo = {
   HTML5, CSS3, JavaScript, Vue, React, Sass, TypeScript, Python, Django, Git
 };
+
+export default logo;

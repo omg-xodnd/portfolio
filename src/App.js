@@ -9,7 +9,7 @@ function App() {
     isLoaded: false,
     isScrolled: false,
     isFinished: false,
-    isIntermissionVisible: false
+    isIntermissionVisible: false,
   };
   const [state, setState] = useState(initState);
   

@@ -4,18 +4,19 @@ export function sleep(ms = 1000) {
   });
 }
 
-export function createObserver(onIntersect, options = { threshold: 1 }) {
-  return new IntersectionObserver(onIntersect, options);
-}
-
+let isScrollActive = false;
 export async function smoothScrollTo(targetY, unit = 40) {
   const getDiff = () => targetY - window.scrollY;
-
+  
+  if (isScrollActive) { return };
+  
+  isScrollActive = true;
   while (1) {
-    await sleep(15);
+    await sleep(13);
     let diff = getDiff();
     if (Math.abs(diff) < unit) {
       window.scrollTo(0, targetY);
+      isScrollActive = false;
       break;
     } else {
       window.scrollBy(0, Math.sign(diff) * unit);  

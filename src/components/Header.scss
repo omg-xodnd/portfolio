@@ -4,9 +4,11 @@
   @include flex-between;
   position: fixed;
   top: 0; right: 0; left: 0;
-  height: 8rem;
-  background-color: white;
+  padding: 2rem 10vw;
+  background-color: $color-bg-dark;
   color: white;
+  font-size: 1.5rem;
+  z-index: 10;
 
   &-nav {
     ul { 
@@ -17,7 +19,18 @@
     }
     li { 
       list-style-type: none; 
-      margin-left: 50px;
+      margin-left: 5rem;
+      color: white;
+      width: 10rem;
+      text-align: center;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
+  }
+
+  .nav-item-active {
+    border-bottom: 3px solid $color-active;
   }
 }
