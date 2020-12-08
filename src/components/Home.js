@@ -14,7 +14,7 @@ function Home() {
   const refSkills = useRef();
 
   useEffect(() => {
-    const observer = new IntersectionObserver(handleIntersect, { threshold: 0.2 });
+    const observer = new IntersectionObserver(handleIntersect, { threshold: 0.3 });
     observeRef(observer, refAbout);
     observeRef(observer, refSkills);
 
@@ -24,7 +24,6 @@ function Home() {
   // methods
   function handleIntersect(entries) {
     entries.forEach(entry => {
-      console.log(entry.target.className, entry.isIntersecting);
 
       if (entry.isIntersecting) {
         smoothScrollTo(entry.target.offsetTop);

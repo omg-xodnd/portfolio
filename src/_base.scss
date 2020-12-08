@@ -5,8 +5,8 @@
 $color-active: #286cff;
 $color-bg-dark: #272729;
 $color-bg-light: #fafafa;
-$mobile-100vh: calc(var(--vh) * 100);
-
+// $mobile-100vh: calc(var(--vh) * 100);
+$mobile-100vh: 100vh;
 
 // [mixins]
 @mixin flex-center {

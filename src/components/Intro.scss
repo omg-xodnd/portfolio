@@ -1,11 +1,11 @@
 @import '../base';
 
 @keyframes spread-grow {
-  0%   { transform: translateX(-39vw) scale(0.025, 0); opacity: 1;}
-  30%  { transform: translateX(-39vw) scale(0.025, 1); }
-  60%  { transform: translateX(0)     scale(1, 1); }
-  70%  { transform: translateX(0)     scale(1, 1); }
-  100% { transform: translateX(40vw)  scale(0, 1); opacity: 1; display: none; }
+  0%   { transform-origin: left; transform: scale(0, 1); opacity: 1;}
+  60%  { transform-origin: left; transform: scale(1, 1); }
+  70%  { transform-origin: right; transform: scale(1, 1); }
+  100% { transform-origin: right; transform: scale(0, 1); opacity: 1;}
+  
 }
 
 @keyframes show-intro-title-text {
